@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="bg-login">
+  <div class="login">
+    <div class="col-left">
+      <img class="img-login" src="{% static 'img/fundo-beecode.png' %}" />
+    </div>
+    <div class="col-right">
+      <h2>LOGIN</h2>
+      <div class="form">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="group">
+            <div class="img">
+              <img class="user" src="{% static 'img/icon-user.png' %}" />
+            </div>
+            <input type="username" id="username" placeholder="Usuário" name="username" size="10" class="input" />
+            <span class="bar"></span>
+            <label for="username"></label>
+          </div>
+          <div class="group">
+            <div class="img">
+              <img class="user" src="{% static 'img/icon-password.png' %}" />
+            </div>
+            <input type="password" id="pwd" placeholder="Senha" name="password" class="input" />
+            <span class="bar"></span>
+            <label for="pwd"></label>
+          </div>
+          {% if messages %} {% for message in messages %}
+          <div class="error-login">{{ message }}</div>
+          {% endfor %} {% endif %}
+          <button type="submit" class="button btn-login">Entrar</button>
+          <hr />
+          <a href="{% url 'reset' %}" class="btn-psw">Esqueci minha senha</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .nav-vertical,
+  .dropdown-item,
+  .nav {
+    display: none;
+  }
+
+  .nav .logo {
+    background-color: #00000000;
+    padding: 35px;
+    -webkit-box-shadow: 8px 0px 8px -10px rgba(0, 0, 0, 0.25);
+    box-shadow: none;
+    border-bottom: none;
+  }
+</style>
+{% endblock %}

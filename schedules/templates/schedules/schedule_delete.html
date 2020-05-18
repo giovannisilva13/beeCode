@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="container confirma">
+        <div class="confirmaExcluir">
+            <img class="" style="width: 50px;" src="{% static 'img/warning.png' %}" alt="home" />
+            <h2>Alerta</h2>
+            <h1>Você realmente deseja excluir este Agendamento?</h1>
+            <a href="{% url 'schedules:schedules' %}" class="btn btn-desiste">Cancelar</a>
+            <a href="{% url 'schedules:schedule_delete_done' schedule.pk %}" class="btn btn-confirma">Ok</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    * {
+        overflow: hidden;
+    }
+
+    .home {
+        background-color: #9a9a9a;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .navClientes {
+        border-right: 2px solid #efc230 !important;
+    }
+
+    body>div.nav-vertical>ul>li:nth-child(3) {
+        background: #e6e8ea;
+    }
+
+    .navClientes .img-cadastro,
+    .navClientes .img-cadastro {
+        filter: none !important;
+    }
+
+    .nav,
+    .nav-vertical {
+        opacity: 0.4 !important;
+    }
+</style>
+{% endblock %}

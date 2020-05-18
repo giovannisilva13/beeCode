@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="d-flex justify-content-center p-2">
+        <h1>Clientes</h1>
+    </div>
+    <div class="container">
+        {% if clients %}
+        <table class="table table-stripped text-black">
+            <thead>
+                <tr>
+                    <td width="20%">Nome</td>
+                    <td width="20%">E-mail</td>
+                    <td width="20%">CPF</td>
+                    <td width="10%">Ações</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr>
+                    <td>{{ client.first_name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.cpf }}</td>
+                    <td>
+                        <a href="{% url 'accounts:client_update' client.pk %}" class="btn btn-warning">
+                            <i class="fa fa-pencil" aria-hidden="true">
+                                <span>&nbsp;Editar</span>
+                            </i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'accounts:client_delete' client.pk %}" class="btn btn-warning">
+                            <i class="fa fa-trash" aria-hidden="true">
+                                <span>&nbsp;Excluir</span>
+                            </i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="container" style="text-align: center">
+            <h1 class="natoTem">Não tem nenhum cliente cadastrado!</h1>
+        </div>
+        {% endif %}
+        <a class="btn-incluir" href="{% url 'accounts:client_create' %}"><img src="{% static 'img/icon-incluir.png' %}"
+                alt="Incluir">
+            <span>&nbsp;Incluir</span></a>
+    </div>
+</div>
+<style>
+    .navClientes {
+        border-right: 2px solid #efc230 !important;
+    }
+
+    body>div.nav-vertical>ul>li:nth-child(3) {
+        background: #e6e8ea;
+    }
+
+    .navClientes .img-cadastro,
+    .navClientes .img-cadastro {
+        filter: none !important;
+    }
+</style>
+{% endblock %}

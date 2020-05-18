@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="bg-login">
+  <div class="login">
+    <div class="col-left">
+      <img class="img-login" src="{% static 'img/fundo-beecode.png' %}" />
+    </div>
+    <div class="col-right">
+      <h2>Senha redefinida.</h2>
+      <a href="{% url 'login' %}" class="btn btn-warning">Faça Login</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

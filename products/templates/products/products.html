@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="d-flex justify-content-center p-2">
+        <h1>Produtos</h1>
+    </div>
+    <div class="container">
+        {% if products %}
+        <table class="table table-stripped text-black table-products">
+            <thead>
+                <tr>
+                    <td width="5%">Código</td>
+                    <td width="15%">Produto</td>
+                    <td width="10%">Preço</td>
+                    <td width="10%">Quantidade(un)</td>
+                    <td width="10%">Saídas</td>
+                    <td width="10%">Entradas</td>
+                    <td width="10%">Ações</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.code }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>R$ {{ product.price }}</td>
+                        <td>{{ product.get_current_quantity }}</td>
+                        <td>
+                            <input
+                            type="number"
+                            class="form-control"
+                            name="product_stock_exit" id="stock_exit-{{ product.pk }}"
+                            value="{{ product.stock_exit }}"
+                            min="0"
+                            onchange="updateStock(this);" />
+                        </td>
+                        <td>
+                            <input
+                            type="number"
+                            class="form-control"
+                            name="product_stock_exit" id="stock_entry-{{ product.pk }}"
+                            value="{{ product.stock_entry }}"
+                            min="0"
+                            onchange="updateStock(this);" />
+                        </td>
+                        <td>
+                            <a href="{% url 'products:product_update' product.pk %}" class="btn btn-warning">
+                                <i class="fa fa-pencil" aria-hidden="true">
+                                    <span>&nbsp;Editar</span>
+                                </i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'products:product_delete' product.pk %}" class="btn btn-warning">
+                                <i class="fa fa-trash" aria-hidden="true">
+                                    <span>&nbsp;Excluir</span>
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="container" style="text-align: center">
+            <h1 class="naoTem">Não tem nenhum produto cadastrado!</h1>
+        </div>
+        {% endif %}
+        <a class="btn-incluir" href="{% url 'products:product_create' %}""><img
+                src=" {% static 'img/icon-incluir.png' %}" alt="Incluir">
+            <span>&nbsp;Incluir</span></a>
+    </div>
+</div>
+<style>
+    .navProdutos {
+        border-right: 2px solid #efc230 !important;
+    }
+
+    body>div.nav-vertical>ul>li:nth-child(4) {
+        background: #e6e8ea;
+    }
+
+    .navProdutos .img-cadastro,
+    .navProdutos .img-cadastro {
+        filter: none !important;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat");
+
+*
+  font-family: "Montserrat", sans-serif
+
+  .bg-login
+    background: url("../img/bg-login.jpg")
+    height: 100vh
+    background-position: top center
+
+//Tela de Login
+.login 
+  height: 478px
+  border-radius: 45px
+  background-color: #fff
+  position: absolute
+  top: 50% 
+  transform: translateY(-50%)
+  width: 800px
+  left: 0
+  right: 0
+  margin: auto
+
+  .col-left,
+  .col-right
+    display: inline-block
+    vertical-align: top
+
+  .col-right
+    width: 59%
+    justify-content: center
+
+  h2
+    font-size: 40px
+    font-family: "Montserrat", sans-serif
+    font-weight: 400
+    line-height: 48px
+    color: #5f5d5e
+    text-align: center
+    margin-top: 60px
+
+
+  .form 
+    display: inline-flex
+    justify-content: center
+    margin-top: 30px
+    width: 100%
+    position: relative
+
+  img 
+    vertical-align: bottom
+
+  .img
+    display: inline-block
+    vertical-align: bottom
+    border-bottom: 2px solid #5f5d5e
+
+  .img-login 
+    margin-top: -1px
+
+  .group
+    position: relative
+    margin-bottom: 45px
+
+  .input 
+    font-size: 18px
+    display: inline-block
+    width: 280px
+    border: none
+    border-bottom: 2px solid #5f5d5e
+    margin-left: -5px
+    padding-left: 20px
+
+  .input:focus
+    outline: none
+
+
+  .error-login
+    width: 100%
+    max-width: 295px
+    position: absolute
+    bottom: 150px
+    color: red
+    font-size: 14px
+    font-family: "Montserrat", sans-serif
+    font-weight: 400
+
+  .button
+    padding: 14px 10px
+    width: 100%
+    max-width: 180px
+    display: block
+    border-radius: 30px
+    background-color: #efc52e
+    font-size: 18px
+    font-family: "Montserrat", sans-serif
+    font-weight: 500
+    line-height: 19px
+    text-align: center
+    color: #ffffff
+    cursor: pointer
+    transition: 0.3s
+    box-shadow: 3px -3px 16px 0 rgba(255, 236, 53, 0.6)
+    border: none
+    text-decoration: none
+    margin: 0 auto
+    &:hover
+      background-color: #fedb75
+
+  hr 
+    border: 1px solid #5f5d5e
+    margin: 30px 0
+
+  .btn-psw
+    font-size: 14px
+    font-family: "Montserrat", sans-serif
+    font-weight: 500
+    color: #5f5d5e
+    display: block
+    text-align: center
+
+ /* LABEL ======================================= */
+  label 
+    color: #5f5d5e
+    font-size: 18px
+    font-weight: normal
+    position: absolute
+    pointer-events: none
+    left: 5px
+    top: 10px
+    transition: 0.2s ease all
+    -moz-transition: 0.2s ease all
+    -webkit-transition: 0.2s ease all
+
+
+ /* active state */
+  .input:focus ~ label,
+  .input:valid ~ label 
+    top: -20px
+    font-size: 14px
+    color: #5264ae
+  
+
+ /* BOTTOM BARS ================================= */
+  .bar
+    position: relative
+    display: block
+    width: 302px
+
+
+  .bar:before,
+  .bar:after 
+    content: ""
+    height: 2px
+    width: 0
+    bottom: 1px
+    position: absolute
+    background: #efc230
+    transition: 0.2s ease all
+    -moz-transition: 0.2s ease all
+    -webkit-transition: 0.2s ease all
+  
+  .bar:before 
+    left: 50%
+  
+
+  .bar:after 
+    right: 50%
+
+ /* active state */
+  .input:focus ~ .bar:before,
+  .input:focus ~ .bar:after 
+    width: 50%
+  
+
+ /* active state */
+  .input:focus ~ .highlight 
+    -webkit-animation: inputHighlighter 0.3s ease
+    -moz-animation: inputHighlighter 0.3s ease
+    animation: inputHighlighter 0.3s ease
+  
+
+ /* ANIMATIONS ================ */
+  @-webkit-keyframes inputHighlighter 
+    from 
+    background: #5264ae
+    
+    to 
+    width: 0
+    background: transparent
+    
+  
+  @-moz-keyframes inputHighlighter 
+    from 
+    background: #5264ae
+    
+    to 
+    width: 0
+    background: transparent
+    
+  
+  @keyframes inputHighlighter 
+    from 
+      background: #5264ae 
+    
+    to 
+      width: 0 
+      background: transparent 
+
+  
+//Tela de Reset de senha
+
+.reset 
+  .img-logo 
+    width: 100% 
+    text-align: center 
+    margin-top: 60px 
+    margin-bottom: 30px 
+
+    .img-reset 
+      width: 50px 
+    
+  
+
+  .form-reset 
+    .control-group 
+      display: inline-flex 
+      justify-content: center 
+      margin: 20px auto 
+      width: 100% 
+    
+
+    .error 
+      font-size: 14px 
+      font-family: "Montserrat", sans-serif 
+      font-weight: 400 
+      color: red 
+    
+
+    .btn-reset 
+      max-width: 280px 
+      margin-top: 30px 
+    
+
+    label 
+      position: unset 
+      padding-right: 5px 
+    
+
+    .emailinput 
+      width: 280px 
+      border: none 
+      border-bottom: 2px solid #5f5d5e 
+
+
+//Tela de Reset feito
+
+.reset-done 
+  display: flex 
+  justify-content: center 
+
+  .img-logo 
+    margin: 60px auto 
+    text-align: center 
+  
+
+  p 
+    text-align: center 
+    font-size: 20px 
+    font-family: "Montserrat", sans-serif 
+    font-weight: 400 
+    margin-bottom: 10px 
+
+
+//Tela de alterar senha sucesso
+
+.alterar-senha-sucesso 
+  text-align: center 
+  margin-top: 60px 
+
+  p 
+    font-size: 20px 
+    font-family: "Montserrat", sans-serif 
+    font-weight: 400 
+    margin-top: 20px 

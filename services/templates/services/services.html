@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="d-flex justify-content-center p-2">
+        <h1>Serviços</h1>
+    </div>
+    <div class="container">
+        {% if services %}
+        <table class="table table-stripped text-black">
+            <thead>
+                <tr>
+                    <td width="5%">Código</td>
+                    <td width="20%">Serviço</td>
+                    <td width="10%"></td>
+                    <td width="10%"></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>{{ service.code }}</td>
+                    <td>{{ service.name }}</td>
+                    <td>
+                        <a href="{% url 'services:service_update' service.pk %}" class="btn btn-warning">
+                            <i class="fa fa-pencil" aria-hidden="true">
+                                <span>&nbsp;Editar</span>
+                            </i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'services:service_delete' service.pk %}" class="btn btn-warning">
+                            <i class="fa fa-trash" aria-hidden="true">
+                                <span>&nbsp;Excluir</span>
+                            </i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="container" style="text-align: center">
+            <h1 class="naoTem">Não tem nenhum serviço cadastrado!</h1>
+        </div>
+        {% endif %}
+        <a class="btn-incluir" href="{% url 'services:service_create' %}"><img src="{% static 'img/icon-incluir.png' %}"
+                alt="Incluir">
+            <span>&nbsp;Incluir</span></a>
+    </div>
+</div>
+<style>
+    .navServicos {
+        border-right: 2px solid #efc230 !important;
+    }
+
+    body>div.nav-vertical>ul>li:nth-child(6) {
+        background: #e6e8ea;
+    }
+
+    .navServicos .img-cadastro,
+    .navServicos .img-cadastro {
+        filter: none !important;
+    }
+</style>
+{% endblock %}

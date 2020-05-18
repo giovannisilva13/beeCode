@@ -1,0 +1,87 @@
+{% load sass_tags %} {% load static %} {% block navbar %}
+
+<div class="nav">
+  <div class="logo">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img class="user" src="{% static 'img/logo.png' %}" />
+    </a>
+  </div>
+  <div class="config">
+    <ul class="nav nav-tabs">
+      <li class="nav-item dropdown">
+        {% if user.is_authenticated %}
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">{{ user.username }} | Pet Shop</a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'accounts:employee_create' %}"><i class="fa fa-plus"
+              aria-hidden="true"></i>&nbsp;&nbsp;Novo Funcionário</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'accounts:change_password' %}"><i class="fa fa-edit"
+              aria-hidden="true"></i>&nbsp;&nbsp;Alterar Senha</a>
+          <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"
+              aria-hidden="true"></i>&nbsp;&nbsp;Sair</a>
+        </div>
+        {% else %}
+        <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+      </li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+          <a href="#" class="btn btn-outline-secondary"
+          >Log in</a
+          >
+      </form> -->
+    {% endif %}
+  </div>
+</div>
+
+<div class="nav-vertical">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link homeNav" href="{% url 'index' %}">
+        <img class="img-cadastro" src="{% static 'img/cadastro.png' %}" alt="home" />
+        <span>Home</span>
+      </a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link navAgendamento" href="{% url 'schedules:schedules' %}">
+        <img class="img-cadastro" src="{% static 'img/agendamento.png' %}" alt="schedules" />
+        Agendamentos
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link navClientes" href="{% url 'accounts:clients' %}">
+        <img class="img-cadastro" src="{% static 'img/funcionarios.png' %}" alt="clients" />
+        Clientes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link navProdutos" href="{% url 'products:products' %}">
+        <img class="img-cadastro" src="{% static 'img/estoque.png' %}" alt="products" />
+        Produtos | Estoque
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link navAnimais" href="{% url 'pets:pets' %}">
+        <img class="img-cadastro" src="{% static 'img/cadastro.png' %}" alt="pets" />
+        Animais
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link navServicos" href="{% url 'services:services' %}">
+        <img class="img-cadastro" src="{% static 'img/servicos.png' %}" alt="services" />
+        Serviços
+      </a>
+    </li>
+    {% if user.is_superuser %}
+    <li class="nav-item">
+      <a class="nav-link navFuncionarios" href="{% url 'accounts:employees' %}">
+        <img class="img-cadastro" src="{% static 'img/funcionarios.png' %}" alt="employees" />
+        Funcionários
+      </a>
+    </li>
+    {% endif %} {% endif %}
+  </ul>
+</div>
+
+{% endblock %}

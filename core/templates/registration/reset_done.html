@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="bg-login">
+  <div class="login">
+    <div class="col-left">
+      <img class="img-login" src="{% static 'img/fundo-beecode.png' %}" />
+    </div>
+    <div class="col-right">
+      <h2>Redefinir senha</h2>
+      <p>Nós te enviamos por e-mail as instruções para redefinição de sua senha, se existir uma conta com o e-mail que
+        você forneceu. Você receberá a mensagem em breve.</p>
+      <p>Se você não receber um e-mail, por favor verifique se você digitou o endereço que você usou para se registrar,
+        e verificar a sua pasta de spam.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

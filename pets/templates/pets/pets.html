@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="d-flex justify-content-center p-2">
+        <h1>Animais</h1>
+    </div>
+    <div class="container">
+        {% if pets %}
+        <table class="table table-stripped text-black">
+            <thead>
+                <tr>
+                    <td width="20%">Cliente</td>
+                    <td width="20%">Nome do Pet</td>
+                    <td width="20%">Tipo</td>
+                    <td width="15%">Porte</td>
+                    <td width="20%">Raça</td>
+                    <td width="5%">Ações</td>
+
+                </tr>
+            </thead>
+            <div class="bgTable">
+                <tbody>
+                    {% for pet in pets %}
+                    <tr>
+                        <td>{{ pet.user.first_name }}</td>
+                        <td>{{ pet.name_pet }}</td>
+                        <td>{{ pet.get_type_pet_display }}</td>
+                        <td>{{ pet.get_class_pet_display }}</td>
+                        <td>{{ pet.breed }}</td>
+                        <td>
+                            <a href="{% url 'pets:pet_update' pet.pk %}" class="btn btn-warning">
+                                <i class="fa fa-pencil" aria-hidden="true">
+                                    <span>&nbsp;Editar</span>
+                                </i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'pets:pet_delete' pet.pk %}" class="btn btn-warning">
+                                <i class="fa fa-trash" aria-hidden="true">
+                                    <span>&nbsp;Excluir</span>
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </div>
+        </table>
+        {% else %}
+        <div class="container" style="text-align: center">
+            <h1 class="naoTem">Não tem nenhum animal cadastrado!</h1>
+        </div>
+        {% endif %}
+        <a class="btn-incluir" href="{% url 'pets:pet_create' %}"><img src="{% static 'img/icon-incluir.png' %}"
+                alt="Incluir">
+            <span>&nbsp;Incluir</span></a>
+    </div>
+</div>
+<style>
+    .navAnimais {
+        border-right: 2px solid #efc230 !important;
+    }
+
+    body>div.nav-vertical>ul>li:nth-child(5) {
+        background: #e6e8ea;
+    }
+
+    .navAnimais .img-cadastro,
+    .navAnimais .img-cadastro {
+        filter: none !important;
+    }
+</style>
+{% endblock %}

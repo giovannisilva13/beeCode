@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="cadastro">
+      <div class="container">
+        <form method="post" action="{% url 'pets:pet_create' %}">
+            {% csrf_token %}
+            {{ pet_create|crispy }}
+            <button type="submit" class="btn btn-warning">Adicionar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

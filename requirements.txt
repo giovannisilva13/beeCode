@@ -1,0 +1,8 @@
+Django==2.2.5
+django-crispy-forms==1.7.2
+django-sass-processor==0.7.3
+libsass==0.19.2
+pytz==2019.2
+rjsmin==1.1.0
+six==1.12.0
+sqlparse==0.3.0

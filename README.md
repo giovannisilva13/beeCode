@@ -1,6 +1,6 @@
 # Primeiro, clone este repositório na sua máquina:
 
-- git clone https://github.com/vibueno2/beeCode.git
+- git clone https://github.com/giovannisilva13/beeCode.git
 
 # Instalação:
 
